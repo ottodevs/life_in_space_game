@@ -14,6 +14,7 @@ public class AssetsLoader implements Disposable {
 
 
     public static Sound logoSound;
+    public static Texture starTex;
 
     private AssetsLoader() {
     }
@@ -23,12 +24,15 @@ public class AssetsLoader implements Disposable {
 
         manager.load("sounds/logo.wav", Sound.class);
         manager.load("fonts/font1.fnt", BitmapFont.class);
+        manager.load("star.png", Texture.class);
 
     }
 
     public static void initializeAssets(AssetManager manager) {
         logoSound = manager.get( "sounds/logo.wav", Sound.class);
         font1 = manager.get("fonts/font1.fnt",BitmapFont.class);
+        starTex = manager.get("star.png",Texture.class);
+        setLinearFilter(starTex);
     }
 
     private static void setLinearFilter(Texture texture) {

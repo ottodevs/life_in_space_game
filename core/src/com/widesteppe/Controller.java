@@ -4,6 +4,9 @@ import com.badlogic.gdx.Game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.widesteppe.screens.LogoScreen;
 import com.widesteppe.utils.AssetsLoader;
 
@@ -14,6 +17,10 @@ public class Controller extends Game {
 	private static LogoScreen logoScreen;
 	private static AssetManager assetManager;
 	private static Controller instance;
+	private SpriteBatch spriteBatch;
+	private BitmapFont font;
+	public static final boolean IS_DEBUG_MODE = true;
+
 	private Controller(){
 		assetManager = new AssetManager();
 	}
@@ -31,6 +38,15 @@ public class Controller extends Game {
 		AssetsLoader.load(assetManager);
 		logoScreen = new LogoScreen();
 		setScreen(logoScreen);
+
+		if(IS_DEBUG_MODE) {
+			OrthographicCamera cam = new OrthographicCamera(WIDTH, HEIGHT);
+			cam.position.set(0, 0, 0);
+			cam.update();
+			font = new BitmapFont(Gdx.files.internal("fonts/font1.fnt"));
+			spriteBatch = new SpriteBatch();
+			spriteBatch.setProjectionMatrix(cam.combined);
+		}
 	}
 
 	@Override
@@ -38,6 +54,16 @@ public class Controller extends Game {
 		super.resize(width, height);
 		WIDTH = width;
 		HEIGHT = height;
+	}
+
+	@Override
+	public void render() {
+		super.render();
+		if (IS_DEBUG_MODE) {
+			spriteBatch.begin();
+			font.draw(spriteBatch, String.valueOf(Gdx.graphics.getFramesPerSecond()), -(float) WIDTH / 2 + 20, -(float) HEIGHT / 2 + 40);
+			spriteBatch.end();
+		}
 	}
 
 	public static AssetManager getAssetManager() {
