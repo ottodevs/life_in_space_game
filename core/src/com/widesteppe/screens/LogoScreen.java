@@ -67,7 +67,7 @@ public class LogoScreen implements Screen {
                 textTimer += Gdx.graphics.getDeltaTime();
                 layoutText.setText(AssetsLoader.font1, ConsoleWriter.generateString(LOGO_STRING, textTimer, ConsoleWriter.VERY_FAST_TYPE_SPEED));
                 if (ConsoleWriter.isReady(LOGO_STRING, textTimer, ConsoleWriter.VERY_FAST_TYPE_SPEED)) {
-                    Controller.getInstance().setScreen(MenuScreen.getInstance());
+                    Controller.setMenuScreen();
                 }
                 AssetsLoader.font1.draw(spriteBatch, layoutText, textX, textY);
             }

@@ -13,12 +13,8 @@ import com.widesteppe.utils.StarGenerator;
 
 public class MenuScreen implements Screen {
     private final SpriteBatch spriteBatch;
-    private static MenuScreen instance;
-    public static MenuScreen getInstance(){
-        if (instance == null) instance = new MenuScreen();
-        return instance;
-    }
-    private MenuScreen() {
+
+    public MenuScreen() {
         float physWorldHeight = 600;
         float physWorldWidth = ((float) Controller.WIDTH / (float) Controller.HEIGHT) * physWorldHeight;
         OrthographicCamera cam = new OrthographicCamera(physWorldWidth, physWorldHeight);

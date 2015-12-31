@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.widesteppe.screens.LogoScreen;
+import com.widesteppe.screens.MenuScreen;
 import com.widesteppe.utils.AssetsLoader;
 
 public class Controller extends Game {
@@ -16,20 +17,17 @@ public class Controller extends Game {
 
 	private static LogoScreen logoScreen;
 	private static AssetManager assetManager;
-	private static Controller instance;
+	private static MenuScreen menuScreen;
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
 	public static final boolean IS_DEBUG_MODE = true;
+	private static boolean shouldSetMenuScreen;
 
-	private Controller(){
+	public Controller(){
 		assetManager = new AssetManager();
 	}
 
-	public static Controller getInstance(){
-		if (instance == null) {
-			return instance=new Controller();
-		} return instance;
-	}
+
 	
 	@Override
 	public void create () {
@@ -64,9 +62,18 @@ public class Controller extends Game {
 			font.draw(spriteBatch, String.valueOf(Gdx.graphics.getFramesPerSecond()), -(float) WIDTH / 2 + 20, -(float) HEIGHT / 2 + 40);
 			spriteBatch.end();
 		}
+		if (shouldSetMenuScreen) {
+			menuScreen = new MenuScreen();
+			setScreen(menuScreen);
+			shouldSetMenuScreen = false;
+		}
 	}
 
 	public static AssetManager getAssetManager() {
 		return assetManager;
+	}
+
+	public static void setMenuScreen() {
+		shouldSetMenuScreen = true;
 	}
 }
