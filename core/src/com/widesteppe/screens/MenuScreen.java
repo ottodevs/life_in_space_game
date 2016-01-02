@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.widesteppe.Controller;
+import com.widesteppe.utils.AssetsLoader;
 import com.widesteppe.utils.Star;
 import com.widesteppe.utils.StarGenerator;
 
@@ -27,7 +28,8 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-
+        AssetsLoader.mainMusic.play();
+        AssetsLoader.mainMusic.setLooping(true);
     }
 
     @Override
@@ -55,12 +57,13 @@ public class MenuScreen implements Screen {
 
     @Override
     public void resume() {
+        AssetsLoader.mainMusic.play();
 
     }
 
     @Override
     public void hide() {
-
+        AssetsLoader.mainMusic.stop();
     }
 
     @Override
