@@ -9,7 +9,7 @@ public class Star {
     private Sprite sprite;
     private float initialX;
     private float initialY;
-    public static final float ANGLE_ROTATION_VELOCITY = 0.2f;
+    public static final float ANGLE_ROTATION_VELOCITY = 0.1f;
     public Star(float physWorldWidth) {
         createSprite(physWorldWidth);
     }

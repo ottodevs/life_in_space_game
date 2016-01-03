@@ -1,15 +1,20 @@
 package com.widesteppe;
 
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.widesteppe.screens.GameScreen;
 import com.widesteppe.screens.LogoScreen;
 import com.widesteppe.screens.MenuScreen;
 import com.widesteppe.utils.AssetsLoader;
+import com.widesteppe.utils.SpriteTween;
 
 public class Controller extends Game {
 	public static int WIDTH;
@@ -18,10 +23,13 @@ public class Controller extends Game {
 	private static LogoScreen logoScreen;
 	private static AssetManager assetManager;
 	private static MenuScreen menuScreen;
+	private static boolean shouldSetGameScreen;
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
 	public static final boolean IS_DEBUG_MODE = true;
 	private static boolean shouldSetMenuScreen;
+	private static TweenManager tweenManager;
+	private GameScreen gameScreen;
 
 	public Controller(){
 		assetManager = new AssetManager();
@@ -36,6 +44,8 @@ public class Controller extends Game {
 		AssetsLoader.load(assetManager);
 		logoScreen = new LogoScreen();
 		setScreen(logoScreen);
+		tweenManager = new TweenManager();
+		Tween.registerAccessor(Sprite.class, new SpriteTween());
 
 		if(IS_DEBUG_MODE) {
 			OrthographicCamera cam = new OrthographicCamera(WIDTH, HEIGHT);
@@ -63,9 +73,18 @@ public class Controller extends Game {
 			spriteBatch.end();
 		}
 		if (shouldSetMenuScreen) {
-			menuScreen = new MenuScreen();
+			if (menuScreen == null) {
+				menuScreen = new MenuScreen();
+			}
 			setScreen(menuScreen);
 			shouldSetMenuScreen = false;
+		}
+		if (shouldSetGameScreen) {
+			if (gameScreen == null) {
+				gameScreen = new GameScreen();
+			}
+			setScreen(gameScreen);
+			shouldSetGameScreen = false;
 		}
 	}
 
@@ -75,5 +94,13 @@ public class Controller extends Game {
 
 	public static void setMenuScreen() {
 		shouldSetMenuScreen = true;
+	}
+
+	public static TweenManager getTweenManager() {
+		return tweenManager;
+	}
+
+	public static void setGameScreen() {
+		shouldSetGameScreen = true;
 	}
 }

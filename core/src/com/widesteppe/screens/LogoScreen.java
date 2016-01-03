@@ -53,7 +53,7 @@ public class LogoScreen implements Screen {
             textY = Controller.HEIGHT / 2;
             AssetsLoader.font1.setColor(AssetsLoader.consoleColor);
         } else {
-            Gdx.gl.glClearColor(0, 0, 0f, 1);
+            Gdx.gl.glClearColor(0, 0, 0, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
             spriteBatch.begin();
@@ -65,9 +65,16 @@ public class LogoScreen implements Screen {
                     isSoundPlaying = true;
                 }
                 textTimer += Gdx.graphics.getDeltaTime();
-                layoutText.setText(AssetsLoader.font1, ConsoleWriter.generateString(LOGO_STRING, textTimer, ConsoleWriter.VERY_FAST_TYPE_SPEED));
-                if (ConsoleWriter.isReady(LOGO_STRING, textTimer, ConsoleWriter.VERY_FAST_TYPE_SPEED)) {
-                    Controller.setMenuScreen();
+                if (Controller.IS_DEBUG_MODE) {
+                    layoutText.setText(AssetsLoader.font1, ConsoleWriter.generateString(LOGO_STRING, textTimer, ConsoleWriter.VERY_FAST_TYPE_SPEED));
+                    if (ConsoleWriter.isReady(LOGO_STRING, textTimer, ConsoleWriter.VERY_FAST_TYPE_SPEED)) {
+                        Controller.setMenuScreen();
+                    }
+                } else {
+                    layoutText.setText(AssetsLoader.font1, ConsoleWriter.generateString(LOGO_STRING, textTimer, ConsoleWriter.SLOW_TYPE_SPEED));
+                    if (ConsoleWriter.isReady(LOGO_STRING, textTimer, ConsoleWriter.SLOW_TYPE_SPEED)) {
+                        Controller.setMenuScreen();
+                    }
                 }
                 AssetsLoader.font1.draw(spriteBatch, layoutText, textX, textY);
             }

@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Disposable;
 
 public class AssetsLoader implements Disposable {
     public static final Color consoleColor = Color.valueOf("#66d9ef");
-    public static final Color spaceColor = Color.valueOf("#0c0b3d");
+    public static final Color spaceColor = Color.valueOf("#05051e");
     public static final String logoSoundAddress = "sounds/logo.wav";
     public static final String font1Address = "fonts/font1.fnt";
     public static final String starTexAddress = "star.png";
@@ -20,6 +20,8 @@ public class AssetsLoader implements Disposable {
     public static final String menuPlayAddress = "screens/main_menu/start_btn.png";
     public static final String menuOptionsAddress = "screens/main_menu/options.png";
     public static final String menuMusicAddress = "sounds/main_music.mp3";
+    public static final String menuTitleAddress = "screens/main_menu/title.png";
+    public static final String stationAddress = "station.png";
     public static BitmapFont font1;
 
     public static Music mainMusic;
@@ -28,6 +30,8 @@ public class AssetsLoader implements Disposable {
     public static Texture menuStationTex;
     public static Texture menuPlayTex;
     public static Texture menuOptionsTex;
+    public static Texture menuTitleTex;
+    public static Texture stationTex;
 
     private AssetsLoader() {
     }
@@ -43,10 +47,12 @@ public class AssetsLoader implements Disposable {
         manager.load(menuStationAddress, Texture.class);
         manager.load(menuPlayAddress, Texture.class);
         manager.load(menuOptionsAddress, Texture.class);
+        manager.load(menuTitleAddress, Texture.class);
 
 
         TextureLoader.TextureParameter param = new TextureLoader.TextureParameter();
         param.genMipMaps = true;
+        manager.load(stationAddress, Texture.class, param);
 
     }
 
@@ -57,8 +63,16 @@ public class AssetsLoader implements Disposable {
         menuStationTex = manager.get(menuStationAddress, Texture.class);
         menuOptionsTex = manager.get(menuOptionsAddress, Texture.class);
         menuPlayTex = manager.get(menuPlayAddress, Texture.class);
+        menuTitleTex = manager.get(menuTitleAddress, Texture.class);
         mainMusic = manager.get(menuMusicAddress, Music.class);
+        stationTex = manager.get(stationAddress, Texture.class);
         setLinearFilter(starTex);
+        setLinearFilter(menuTitleTex);
+        setLinearFilter(menuPlayTex);
+        setLinearFilter(menuStationTex);
+        setLinearFilter(menuOptionsTex);
+        //setLinearFilter(stationTex);
+        stationTex.setFilter(Texture.TextureFilter.MipMap, Texture.TextureFilter.Linear);
     }
 
     private static void setLinearFilter(Texture texture) {
