@@ -2,7 +2,7 @@
 skeleton.png
 size: 512,256
 format: RGBA8888
-filter: Linear,Linear
+filter: MipMap,Linear
 repeat: none
 body
   rotate: false
@@ -86,13 +86,6 @@ r_shoulder
   xy: 362, 111
   size: 62, 75
   orig: 62, 75
-  offset: 0, 0
-  index: -1
-red_lamp
-  rotate: true
-  xy: 426, 89
-  size: 25, 26
-  orig: 25, 26
   offset: 0, 0
   index: -1
 smile

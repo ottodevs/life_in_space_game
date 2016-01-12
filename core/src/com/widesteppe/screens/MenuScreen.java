@@ -42,6 +42,7 @@ public class MenuScreen implements Screen, InputProcessor {
         spriteBatch = new SpriteBatch();
         spriteBatch.setProjectionMatrix(cam.combined);
         StarGenerator.generateStars(physWorldWidth);
+        createSprites();
     }
 
     @Override
@@ -49,7 +50,7 @@ public class MenuScreen implements Screen, InputProcessor {
         AssetsLoader.mainMusic.play();
         AssetsLoader.mainMusic.setVolume(0.2f);
         AssetsLoader.mainMusic.setLooping(true);
-        createSprites();
+        playButton.setScale(1f);
         Gdx.input.setInputProcessor(this);
     }
 
@@ -116,9 +117,7 @@ public class MenuScreen implements Screen, InputProcessor {
 
     @Override
     public void resume() {
-        AssetsLoader.mainMusic.play();
-        playButton.setScale(1f);
-        Gdx.input.setInputProcessor(this);
+
 
 
     }

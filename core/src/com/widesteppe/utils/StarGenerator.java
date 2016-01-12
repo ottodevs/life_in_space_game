@@ -15,9 +15,6 @@ public class StarGenerator {
         }
         return stars;
     }
-    public static void updateStarPositions(float delta){
-
-    }
     public static ArrayList<Star> getStars() {
         return stars;
     }

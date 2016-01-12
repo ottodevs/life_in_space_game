@@ -1,19 +1,19 @@
 package com.widesteppe.desktop;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.widesteppe.Controller;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		//config.width = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
-		//config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
-		config.title = "Homorium I";
-		//config.fullscreen = true;
-		config.width = 1280;
-		config.height = 800;
-		config.vSyncEnabled = true;
-		new LwjglApplication(new Controller(), config);
-	}
+    public static void main(String[] arg) {
+        Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+        config.setTitle("Homorium I");
+        //config.fullscreen = true;
+        config.setWindowedMode(1280, 800);
+        //config.useVsync(true);
+
+        //config.setFullscreenMode(Lwjgl3ApplicationConfiguration.getDisplayMode());
+
+        new Lwjgl3Application(new Controller(), config);
+    }
 }

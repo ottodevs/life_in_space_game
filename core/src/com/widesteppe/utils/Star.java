@@ -19,8 +19,8 @@ public class Star {
         float randomSize = MathUtils.random(4, 8);
         sprite.setSize(randomSize, randomSize);
         sprite.setScale(MathUtils.random(0.95f, 1.05f), MathUtils.random(0.95f, 1.05f));
-        initialX = MathUtils.random(-physWorldWidth/2, physWorldWidth / 2);
-        initialY = MathUtils.random(-physWorldWidth/2, physWorldWidth / 2);
+        initialX = MathUtils.random(-physWorldWidth * 0.6f, physWorldWidth * 0.6f);
+        initialY = MathUtils.random(-physWorldWidth * 0.6f, physWorldWidth * 0.6f);
         sprite.setOrigin(sprite.getWidth() / 2 - initialX, sprite.getHeight() / 2 - initialY);
         sprite.setPosition(initialX, initialY);
         sprite.setColor(MathUtils.random(0.8f,1),MathUtils.random(0.8f,1),MathUtils.random(0.8f,1),MathUtils.random(0.8f,1));

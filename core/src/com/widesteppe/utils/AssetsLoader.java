@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Disposable;
 
 
@@ -21,7 +22,8 @@ public class AssetsLoader implements Disposable {
     public static final String menuOptionsAddress = "screens/main_menu/options.png";
     public static final String menuMusicAddress = "sounds/main_music.mp3";
     public static final String menuTitleAddress = "screens/main_menu/title.png";
-    public static final String stationAddress = "station.png";
+    public static final String robotSpineAtlasAddress = "spine/robot/skeleton.atlas";
+    public static final String humanSpineAtlasAddress = "spine/human/skeleton.atlas";
     public static BitmapFont font1;
 
     public static Music mainMusic;
@@ -31,7 +33,10 @@ public class AssetsLoader implements Disposable {
     public static Texture menuPlayTex;
     public static Texture menuOptionsTex;
     public static Texture menuTitleTex;
-    public static Texture stationTex;
+    public static TextureAtlas robotSpineAtlas;
+    public static int STATION_NUMBER = 4;
+    public static Texture[] stationTextures = new Texture[STATION_NUMBER];
+    public static TextureAtlas humanSpineAtlas;
 
     private AssetsLoader() {
     }
@@ -52,7 +57,12 @@ public class AssetsLoader implements Disposable {
 
         TextureLoader.TextureParameter param = new TextureLoader.TextureParameter();
         param.genMipMaps = true;
-        manager.load(stationAddress, Texture.class, param);
+        for (int i = 0; i < STATION_NUMBER; i++) {
+            manager.load("station" + (i + 1) + ".png", Texture.class, param);
+        }
+
+        manager.load(robotSpineAtlasAddress, TextureAtlas.class);
+        manager.load(humanSpineAtlasAddress, TextureAtlas.class);
 
     }
 
@@ -65,14 +75,20 @@ public class AssetsLoader implements Disposable {
         menuPlayTex = manager.get(menuPlayAddress, Texture.class);
         menuTitleTex = manager.get(menuTitleAddress, Texture.class);
         mainMusic = manager.get(menuMusicAddress, Music.class);
-        stationTex = manager.get(stationAddress, Texture.class);
+        for (int i = 0; i < STATION_NUMBER; i++) {
+            stationTextures[i] = manager.get("station" + (i + 1) + ".png", Texture.class);
+            stationTextures[i].setFilter(Texture.TextureFilter.MipMap, Texture.TextureFilter.Linear);
+
+
+        }
         setLinearFilter(starTex);
         setLinearFilter(menuTitleTex);
         setLinearFilter(menuPlayTex);
         setLinearFilter(menuStationTex);
         setLinearFilter(menuOptionsTex);
-        //setLinearFilter(stationTex);
-        stationTex.setFilter(Texture.TextureFilter.MipMap, Texture.TextureFilter.Linear);
+
+        robotSpineAtlas = manager.get(robotSpineAtlasAddress, TextureAtlas.class);
+        humanSpineAtlas = manager.get(humanSpineAtlasAddress, TextureAtlas.class);
     }
 
     private static void setLinearFilter(Texture texture) {
