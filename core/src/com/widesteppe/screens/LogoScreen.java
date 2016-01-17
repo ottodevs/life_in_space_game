@@ -76,6 +76,7 @@ public class LogoScreen implements Screen {
                         Controller.setMenuScreen();
                     }
                 }
+
                 AssetsLoader.font1.draw(spriteBatch, layoutText, textX, textY);
             }
             poweredSprite.draw(spriteBatch);

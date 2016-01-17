@@ -8,58 +8,63 @@ import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.widesteppe.Controller;
+import com.widesteppe.Director;
+import com.widesteppe.Quest;
 import com.widesteppe.actors.Astronaut;
 import com.widesteppe.actors.Crew;
-import com.widesteppe.actors.Robot;
-import com.widesteppe.utils.AssetsLoader;
-import com.widesteppe.utils.GameInputHandler;
-import com.widesteppe.utils.Star;
-import com.widesteppe.utils.StarGenerator;
+import com.widesteppe.actors.Human;
+import com.widesteppe.utils.*;
 
 
 public class GameScreen implements Screen {
+    public static boolean isPause;
     private final float physWorldHeight;
     private final float physWorldWidth;
     private final OrthographicCamera cam;
     private final SpriteBatch spriteBatch;
-    private final Matrix4 starMatrix;
 
     private final PolygonSpriteBatch polygonSpriteBatch;
+    private final Foreground foreground;
+    private final MainGUI mainGui;
     private Sprite[] backSprites = new Sprite[AssetsLoader.STATION_NUMBER];
     private GameInputHandler inputHandler;
-    public static final float MIN_ZOMM = 2;
-    public static final float MAX_ZOMM = 8;
+    public static final float MIN_ZOOM = 1;
+    public static final float MAX_ZOOM = 4;
 
 
     private Vector2 cameraTargetPosition = new Vector2();
-    private Robot robot;
     public static final float TOP_MAX_DIST = 1600;
     public static final float WALKING_DIST = 1850;
     private boolean cameraTargetChanged;
     public boolean isZooming = false;
     private Crew crew;
+    private Stage spaceshipStage;
+    public static final float PHYS_WORLD_WIDTH = 1200f;
+    private Director director;
 
     public GameScreen() {
-        physWorldHeight = 600f;
+        physWorldHeight = PHYS_WORLD_WIDTH;
         physWorldWidth = ((float) Controller.WIDTH / (float) Controller.HEIGHT) * physWorldHeight;
-        robot = new Robot();
-        crew = new Crew();
-
+        foreground = new Foreground();
         cam = new OrthographicCamera(physWorldWidth, physWorldHeight);
         spriteBatch = new SpriteBatch();
-        starMatrix = new Matrix4(cam.combined);
         createBack();
         inputHandler = new GameInputHandler(this);
         Gdx.input.setInputProcessor(inputHandler);
         Gdx.input.setCatchBackKey(true);
         polygonSpriteBatch = new PolygonSpriteBatch();
-        cam.position.set(robot.getX(), robot.getY(), 0f);
+        spaceshipStage = new Stage(new FitViewport(physWorldWidth, physWorldHeight, cam), spriteBatch);
+        crew = new Crew(spaceshipStage);
         changeCameraZoomPosTarget();
-        cam.update();
+        cam.position.set(cameraTargetPosition.x, cameraTargetPosition.y, 0f);
 
+        cam.update();
+        mainGui = new MainGUI(this);
+        director = new Director(crew);
     }
 
     private void createBack() {
@@ -84,7 +89,12 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        setPause(false);
+        MainTimer.setTimeInSeconds(MyPrefs.getInstance().getTimerValue());
+        MainGUI.isGameOVER = MyPrefs.getInstance().isGameOver();
+        director.getQuest().setId(MyPrefs.getInstance().getMissionId());
         Gdx.input.setInputProcessor(inputHandler);
+        director.getQuest().reset();
 
     }
 
@@ -94,7 +104,8 @@ public class GameScreen implements Screen {
 
         Gdx.gl.glClearColor(AssetsLoader.spaceColor.r, AssetsLoader.spaceColor.g, AssetsLoader.spaceColor.b, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        spriteBatch.setProjectionMatrix(starMatrix);
+        //BACKGROUND
+        spriteBatch.setProjectionMatrix(MenuScreen.starMatrix);
         spriteBatch.begin();
         for (Star star : StarGenerator.getStars()) {
             star.render(spriteBatch);
@@ -108,26 +119,41 @@ public class GameScreen implements Screen {
         }
         spriteBatch.end();
 
+        //CHARACTERS
 
         polygonSpriteBatch.setProjectionMatrix(cam.combined);
         polygonSpriteBatch.begin();
-        robot.render(polygonSpriteBatch);
         crew.render(polygonSpriteBatch);
         polygonSpriteBatch.end();
 
-        spriteBatch.setProjectionMatrix(starMatrix);
+        //FOREGROUND
         spriteBatch.begin();
-       // AssetsLoader.font1.draw(spriteBatch, String.valueOf(currentDistance), 0, 0);
+        foreground.render(spriteBatch);
         spriteBatch.end();
 
+        spriteBatch.begin();
+       // AssetsLoader.font1.draw(spriteBatch, String.valueOf(currentDistance), 0, 0);
 
+        spriteBatch.end();
+        spaceshipStage.act();
+        spaceshipStage.draw();
+        if (Controller.IS_DEBUG_MODE) {
+            spaceshipStage.setDebugAll(true);
+        }
+        mainGui.render();
     }
 
     private void updateState(float delta) {
-        updateCamera(delta);
-        for (Star star : StarGenerator.getStars()) star.update(delta);
-        robot.update(delta);
-        crew.update(delta);
+        if (!isPause) {
+            MainTimer.update(delta);
+            updateCamera(delta);
+            for (Star star : StarGenerator.getStars()) star.update(delta);
+            crew.update(delta);
+            director.update(delta);
+            if (director.getQuest().isDialog() && cam.zoom != MIN_ZOOM) {
+                scrollCamera(-10);
+            }
+        }
 
     }
 
@@ -140,12 +166,14 @@ public class GameScreen implements Screen {
             cam.update();
         }
         if (Math.abs(cam.zoom - cameraZoom) < 0.01f) {
+            //cam.zoom = cameraZoom;
+            //cam.position.set(cameraTargetPosition.x, cameraTargetPosition.y, 0);
+            cam.update();
             cameraTargetChanged = false;
         }
-        if (robot.getCurrentRobotState() == Astronaut.AI_STATE.WALKING) {
+        if (crew.getRobot().getCurrentState() == Astronaut.AI_STATE.WALKING) {
             changeCameraZoomPosTarget();
-            System.out.println(getCameraCurrentXYAngle(cam));
-            cam.rotate((getCameraCurrentXYAngle(cam) + 90) % 360 - robot.getCurrentPositionAngle());
+            cam.rotate((getCameraCurrentXYAngle(cam) + 90) % 360 - crew.getRobot().getCurrentPositionAngle());
         }
 
     }
@@ -157,11 +185,12 @@ public class GameScreen implements Screen {
 
     @Override
     public void pause() {
-
+        isPause = true;
     }
 
     @Override
     public void resume() {
+        isPause = false;
     }
 
     @Override
@@ -188,9 +217,9 @@ public class GameScreen implements Screen {
     }
 
     public void changeCameraZoomPosTarget() {
-        cameraZoom = MathUtils.clamp(cameraZoom, MIN_ZOMM, MAX_ZOMM);
-        tempVector.set(MathUtils.cosDeg(robot.getCurrentPositionAngle()) * TOP_MAX_DIST, MathUtils.sinDeg(robot.getCurrentPositionAngle()) * TOP_MAX_DIST);
-        float a = MathUtils.clamp((cameraZoom - MIN_ZOMM) / (MAX_ZOMM - MIN_ZOMM), 0, 1);
+        cameraZoom = MathUtils.clamp(cameraZoom, MIN_ZOOM, MAX_ZOOM);
+        tempVector.set(MathUtils.cosDeg(crew.getRobot().getCurrentPositionAngle()) * TOP_MAX_DIST, MathUtils.sinDeg(crew.getRobot().getCurrentPositionAngle()) * TOP_MAX_DIST);
+        float a = MathUtils.clamp((cameraZoom - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM), 0, 1);
         cameraTargetPosition.set(tempVector.lerp(Vector2.Zero, a));
         cameraTargetChanged = true;
     }
@@ -223,11 +252,27 @@ public class GameScreen implements Screen {
         return 180 - (float)Math.atan2(cam.up.x, cam.up.y)*MathUtils.radiansToDegrees;
     }
 
-    public Robot getRobot() {
-        return robot;
-    }
-
     public OrthographicCamera getCam() {
         return cam;
+    }
+
+    public Crew getCrew() {
+        return crew;
+    }
+
+    public float getPhysWorldHeight() {
+        return physWorldHeight;
+    }
+
+    public float getPhysWorldWidth() {
+        return physWorldWidth;
+    }
+
+    public void setPause(boolean pause) {
+        this.isPause = pause;
+    }
+
+    public Director getDirector() {
+        return director;
     }
 }

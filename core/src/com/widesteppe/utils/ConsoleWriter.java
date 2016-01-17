@@ -4,6 +4,7 @@ public class ConsoleWriter {
     public static final float SLOW_TYPE_SPEED = 0.16f;
     public static final float FAST_TYPE_SPEED = 0.08f;
     public static final float VERY_FAST_TYPE_SPEED = 0.04f;
+    public static final float SUPER_FAST_TYPE_SPEED = 0.01f;
     public static final float LAST_CHAR_DUR = 0.2f;
 
     public static String generateString(String string, float timeAfterStart, float oneCharDur) {

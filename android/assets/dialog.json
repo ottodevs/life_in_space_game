@@ -1,0 +1,221 @@
+[
+    {
+        "id": 0,
+        "quest": "I have to find captain Jack.",
+        "person": "JACK",
+        "speech": [
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Hi Sam."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hello Jack, how are you doing?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Sam, can you keep a secret?"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Yes I can."
+                    },
+                    {
+                        "text": "No I cannot."
+                    },
+                    {
+                        "text": "I have never tried."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Okay, that's great.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "That's bad, your program should be upgraded.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "Then try, it is important for me.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "What is the secret?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Do you promise, not to tell anyone?"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Yes, I promise you."
+                    },
+                    {
+                        "text": "No, I do not promise you."
+                    },
+                    {
+                        "text": "I cannot lie, but I will not discuss it with others."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Wonderful.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Okay, okay. Make one simple thing and forget about it.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "It's better, than nothing.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I feel that we stray from our trajectory, but all readings are normal."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Inspect the station. Talk with scientists. Maybe you'll find something abnormal or strange."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "No problem."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Nobody should know about my concerns."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "quest": "I have to find something strange, hm...",
+        "person": "SEB",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hello Sebastian."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Stars. Look at them. They are going mad, or maybe I..."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "What are you talking about?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "My eyes betrayed me. Stars are changing places."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "You are tired. It is simple artificial gravity of the station."
+                    },
+                    {
+                        "text": "I will report captain about your state."
+                    },
+                    {
+                        "text": "Captain also noticed, that we stray from trajectory."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Go, do your job, robot.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "That's your business, I don't care.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "Yes?! Truly?! So I am not crazy, it is anomaly.",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "See you, Sebastian"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -11,18 +11,16 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.widesteppe.Controller;
-import com.widesteppe.utils.AssetsLoader;
-import com.widesteppe.utils.SpriteTween;
-import com.widesteppe.utils.Star;
-import com.widesteppe.utils.StarGenerator;
+import com.widesteppe.utils.*;
 
 
 public class MenuScreen implements Screen, InputProcessor {
     private final SpriteBatch spriteBatch;
-    private final float physWorldHeight;
-    private final float physWorldWidth;
+    public static final float physWorldHeight = 600;
+    public static final float physWorldWidth = ((float) Controller.WIDTH / (float) Controller.HEIGHT) * physWorldHeight;
     private final OrthographicCamera cam;
     private Sprite station;
     private Sprite title;
@@ -31,16 +29,18 @@ public class MenuScreen implements Screen, InputProcessor {
     private Vector3 vc3 = new Vector3();
     private boolean playButtonTouched;
     private boolean optionsButtonTouched;
+    public static Matrix4 starMatrix = new Matrix4();
 
 
     public MenuScreen() {
-        physWorldHeight = 600;
-        physWorldWidth = ((float) Controller.WIDTH / (float) Controller.HEIGHT) * physWorldHeight;
+        //physWorldHeight = 600;
+        //physWorldWidth = ((float) Controller.WIDTH / (float) Controller.HEIGHT) * physWorldHeight;
         cam = new OrthographicCamera(physWorldWidth, physWorldHeight);
         cam.position.set(0f, 0f, 0f);
         cam.update();
         spriteBatch = new SpriteBatch();
         spriteBatch.setProjectionMatrix(cam.combined);
+        starMatrix.set(cam.combined);
         StarGenerator.generateStars(physWorldWidth);
         createSprites();
     }
@@ -52,6 +52,7 @@ public class MenuScreen implements Screen, InputProcessor {
         AssetsLoader.mainMusic.setLooping(true);
         playButton.setScale(1f);
         Gdx.input.setInputProcessor(this);
+        Gdx.input.setCatchBackKey(true);
     }
 
     private void createSprites() {
@@ -134,7 +135,7 @@ public class MenuScreen implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Input.Keys.ESCAPE) Gdx.app.exit();
+        if (keycode == Input.Keys.ESCAPE || keycode == Input.Keys.BACK) Controller.exitGame();
         return false;
     }
 
@@ -168,6 +169,7 @@ public class MenuScreen implements Screen, InputProcessor {
         cam.unproject(vc3.set(screenX, screenY, 0));
         if (playButton.getBoundingRectangle().contains(vc3.x, vc3.y) && playButtonTouched) {
             startGame();
+            Tween.to(playButton, SpriteTween.SCALE_XY, 0.5f).target(1f, 1f).ease(Quint.OUT).start(Controller.getTweenManager());
             return true;
         }
         if (optionsButton.getBoundingRectangle().contains(vc3.x, vc3.y) && optionsButtonTouched) {
@@ -186,7 +188,27 @@ public class MenuScreen implements Screen, InputProcessor {
     }
 
     private void openOptionsPopup() {
-        //TODO create optionsPopup
+        ChooserPopup.getInstance().open(true, "CLEAR PROGRESS", "QUIT GAME", new ThreeOptionChooser() {
+            @Override
+            public void optionOne() {
+                MyPrefs.getInstance().clearProgress();
+            }
+
+            @Override
+            public void optionTwo() {
+                Controller.exitGame();
+            }
+
+            @Override
+            public void optionThree() {
+
+            }
+
+            @Override
+            public void close() {
+
+            }
+        });
     }
 
     private void startGame() {

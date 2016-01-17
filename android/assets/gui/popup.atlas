@@ -1,0 +1,25 @@
+popup.atlas.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 2
+  size: 1060, 300
+  orig: 1060, 300
+  offset: 0, 0
+  index: -1
+buttonDown
+  rotate: false
+  xy: 2, 304
+  size: 1028, 81
+  orig: 1028, 81
+  offset: 0, 0
+  index: -1
+buttonUp
+  rotate: false
+  xy: 2, 387
+  size: 1028, 81
+  orig: 1028, 81
+  offset: 0, 0
+  index: -1

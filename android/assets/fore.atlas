@@ -1,0 +1,67 @@
+fore.png
+format: RGBA8888
+filter: MipMap, Linear
+repeat: none
+roundTable
+  rotate: false
+  xy: 2, 2
+  size: 262, 87
+  orig: 262, 87
+  offset: 0, 0
+  index: -1
+scientist_table3
+  rotate: false
+  xy: 266, 2
+  size: 235, 95
+  orig: 235, 95
+  offset: 0, 0
+  index: -1
+scientist_table
+  rotate: false
+  xy: 503, 2
+  size: 208, 124
+  orig: 208, 124
+  offset: 0, 0
+  index: -1
+tool_table
+  rotate: false
+  xy: 713, 2
+  size: 291, 127
+  orig: 291, 127
+  offset: 0, 0
+  index: -1
+comp_table
+  rotate: false
+  xy: 1006, 2
+  size: 265, 152
+  orig: 265, 152
+  offset: 0, 0
+  index: -1
+scientist_table2
+  rotate: false
+  xy: 2, 156
+  size: 291, 176
+  orig: 291, 176
+  offset: 0, 0
+  index: -1
+runningTrain
+  rotate: false
+  xy: 295, 156
+  size: 252, 222
+  orig: 252, 222
+  offset: 0, 0
+  index: -1
+crafting_table
+  rotate: false
+  xy: 549, 156
+  size: 290, 245
+  orig: 290, 245
+  offset: 0, 0
+  index: -1
+buffer
+  rotate: false
+  xy: 841, 156
+  size: 381, 354
+  orig: 381, 354
+  offset: 0, 0
+  index: -1

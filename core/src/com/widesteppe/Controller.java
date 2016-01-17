@@ -14,6 +14,7 @@ import com.widesteppe.screens.GameScreen;
 import com.widesteppe.screens.LogoScreen;
 import com.widesteppe.screens.MenuScreen;
 import com.widesteppe.utils.AssetsLoader;
+import com.widesteppe.utils.ChooserPopup;
 import com.widesteppe.utils.SpriteTween;
 
 public class Controller extends Game {
@@ -26,7 +27,7 @@ public class Controller extends Game {
 	private static boolean shouldSetGameScreen;
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
-	public static final boolean IS_DEBUG_MODE = true;
+	public static final boolean IS_DEBUG_MODE = false;
 	private static boolean shouldSetMenuScreen;
 	private static TweenManager tweenManager;
 	private GameScreen gameScreen;
@@ -86,7 +87,12 @@ public class Controller extends Game {
 			setScreen(gameScreen);
 			shouldSetGameScreen = false;
 		}
+		if (ChooserPopup.isOpen) {
+			ChooserPopup.getInstance().update();
+		}
 	}
+
+
 
 	public static AssetManager getAssetManager() {
 		return assetManager;
@@ -102,5 +108,9 @@ public class Controller extends Game {
 
 	public static void setGameScreen() {
 		shouldSetGameScreen = true;
+	}
+
+	public static void exitGame() {
+		System.exit(0);
 	}
 }
