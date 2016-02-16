@@ -1,7 +1,5 @@
 package com.widesteppe.utils;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.MathUtils;
 
 import java.util.ArrayList;
 
@@ -17,5 +15,11 @@ public class StarGenerator {
     }
     public static ArrayList<Star> getStars() {
         return stars;
+    }
+
+    public static void boom() {
+        for(Star star : stars) {
+            star.isBoom = true;
+        }
     }
 }

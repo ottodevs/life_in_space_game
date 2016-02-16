@@ -2,7 +2,7 @@
 skeleton.png
 size: 1024,512
 format: RGBA8888
-filter: MipMap,Linear
+filter: MipMap, Linear
 repeat: none
 body
   rotate: false

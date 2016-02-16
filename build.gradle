@@ -1,11 +1,13 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
+            jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
         classpath 'org.robovm:robovm-gradle-plugin:1.12.0'
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
     }
 }
 
@@ -81,6 +83,20 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile fileTree(dir: '../libs', include: '*.jar')
         testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+}
+
+project(":html") {
+    apply plugin: "gwt"
+    apply plugin: "war"
+
+
+    dependencies {
+        compile project(":core")
+        compile fileTree(dir: '../libs', include: '*.jar')
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
     }
 }
 

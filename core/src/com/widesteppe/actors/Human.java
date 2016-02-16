@@ -7,6 +7,7 @@ import com.esotericsoftware.spine.Animation;
 import com.esotericsoftware.spine.Skin;
 import com.esotericsoftware.spine.Slot;
 import com.widesteppe.Director;
+import com.widesteppe.Quest;
 import com.widesteppe.screens.GameScreen;
 import com.widesteppe.utils.AssetsLoader;
 import com.widesteppe.utils.MainTimer;
@@ -36,8 +37,21 @@ public class Human extends Astronaut {
     private float gotoSleepTimer;
     private final float GOTO_SLEEP_MAX_TIME = 0.2f;
     private float currentWorkPlaceAngle;
+    public EMOTION currentMood = EMOTION.HAPPY;
+
     public void setTargetActivity(ACTIVITY targetActivity) {
         this.targetActivity = targetActivity;
+    }
+
+    public void resetActivity() {
+        currentActivity = ACTIVITY.NONE;
+        currentPositionAngle = initialAngle;
+        targetActivity = ACTIVITY.NONE;
+        currentWorkPlaceAngle = 0;
+        setToIdle();
+        changePositionAccordingToAngle();
+
+
     }
 
     public enum SKIN_NAMES {
@@ -347,7 +361,7 @@ public class Human extends Astronaut {
     }
 
     private void resetToolAndEmotion() {
-        setEmotion(EMOTION.HAPPY);
+        setEmotion(currentMood);
         setTool(TOOL.NONE);
     }
 

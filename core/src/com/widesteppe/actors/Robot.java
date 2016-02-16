@@ -6,11 +6,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.spine.*;
 import com.widesteppe.screens.GameScreen;
 import com.widesteppe.utils.AssetsLoader;
+import com.widesteppe.utils.ClickPoint;
+import com.widesteppe.utils.ClickPointGizmo;
 
 
 public class Robot extends Astronaut{
     private final Animation idle2;
     private final Animation idle3;
+    private final Slot faceSlot;
+    private final int faceSlotIndex;
     private float idleTimer;
     private static final float SCALE = 0.5f;
     public static final String ROBOT_JSON_ADD = "spine/robot/skeleton.json";
@@ -18,10 +22,30 @@ public class Robot extends Astronaut{
     private Human humanTarget;
     private boolean isRichedPerson;
 
+    public void setReachedPerson(boolean reachedPerson) {
+        this.isRichedPerson = reachedPerson;
+    }
+
+    public enum EMOTION {
+        HAPPY("smile"),
+        SAD("sad"),
+        CALM("calm");
+        private final String name;
+
+        EMOTION(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
     public Robot(Crew.MEMBER_INFO info) {
         super(270, SCALE, ROBOT_ANGLE_VEL, ROBOT_JSON_ADD, AssetsLoader.robotSpineAtlas, info);
         idle2 = skeletonData.findAnimation("idle2");
         idle3 = skeletonData.findAnimation("idle3");
+        faceSlot = skeleton.findSlot("smile");
+        faceSlotIndex = skeletonData.findSlotIndex("smile");
     }
 
     @Override
@@ -104,8 +128,18 @@ public class Robot extends Astronaut{
             if (currentState != AI_STATE.TALKING) {
                 goToPoint(x, y);
                 clearFollowPerson();
+                ClickPointGizmo.getInstance().startNewClick(ClickPoint.CLICK_TYPE.GREEN, x, y);
+                resetEmotion();
             }
+        } else {
+            ClickPointGizmo.getInstance().startNewClick(ClickPoint.CLICK_TYPE.RED, x, y);
+
         }
+
+    }
+
+    private void resetEmotion() {
+        setEmotion(EMOTION.HAPPY);
     }
 
     private void clearFollowPerson() {
@@ -117,11 +151,13 @@ public class Robot extends Astronaut{
     public void setToIdle() {
         super.setToIdle();
         idleTimer = 0;
+        resetEmotion();
     }
 
     public void goToHuman(Human human) {
         this.humanTarget = human;
         followHuman();
+        resetEmotion();
     }
 
     public boolean isRichedPerson() {
@@ -130,6 +166,10 @@ public class Robot extends Astronaut{
 
     public Human getTargetHuman() {
         return humanTarget;
+    }
+
+    public void setEmotion(EMOTION emotion) {
+        faceSlot.setAttachment(skeletonData.getDefaultSkin().getAttachment(faceSlotIndex, emotion.getName()));
     }
 
 }

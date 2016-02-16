@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.widesteppe.Director;
+import com.widesteppe.utils.ClickPoint;
+import com.widesteppe.utils.ClickPointGizmo;
 
 import java.util.ArrayList;
 
@@ -38,18 +40,18 @@ public class Crew {
     }
     public enum MEMBER_INFO {
         JACK(0, "Jack Miller", ROLE.CAPTAIN, Director.SCHEDULE.FIRST_SHIFT, 345, 260, 255, 265, false),
-        CLARA(1, "Clara Johnson", ROLE.SCIENTIST, Director.SCHEDULE.FIRST_SHIFT, 61,47, 33, 24, false),
-        SOFIA(2, "Sofia Coleman", ROLE.SCIENTIST, Director.SCHEDULE.FIRST_SHIFT, 54,68, 4, 15, true),
+        CLARA(1, "Clara Johnson", ROLE.SCIENTIST, Director.SCHEDULE.FIRST_SHIFT, 60,46, 33, 23, false),
+        SOFIA(2, "Sofia Coleman", ROLE.SCIENTIST, Director.SCHEDULE.FIRST_SHIFT, 53,67, 4, 14, true),
         SEB(3, "Sebastian Reed", ROLE.SCIENTIST, Director.SCHEDULE.SECOND_SHIFT, 61,47, 33, 24, false),
         MICHAEL(4, "Michael Murphy", ROLE.SCIENTIST, Director.SCHEDULE.SECOND_SHIFT, 54,68, 4, 15, true),
-        IVAN(5, "Ivan Petrovich", ROLE.SCOUT, Director.SCHEDULE.SECOND_SHIFT, 178.5f, 100, 125, 136, false),
-        PATRICK(6, "Patrick Green", ROLE.SCOUT, Director.SCHEDULE.SECOND_SHIFT, 191.5f, 108, 154, 144, true),
+        IVAN(5, "Ivan Petrovich", ROLE.SCOUT, Director.SCHEDULE.SECOND_SHIFT, 178.5f, 100, 125, 135, false),
+        PATRICK(6, "Patrick Green", ROLE.SCOUT, Director.SCHEDULE.SECOND_SHIFT, 191.5f, 108, 154, 143, true),
         GAVIN(7, "Gavin King", ROLE.SCOUT, Director.SCHEDULE.FIRST_SHIFT, 178.5f, 103, 154, 144, false),
         ISAAC(8, "Isaac Young", ROLE.SCOUT, Director.SCHEDULE.FIRST_SHIFT, 191.5f, 111, 125, 136, true),
-        AVI(9, "Avi Goldberg", ROLE.MECHANIC, Director.SCHEDULE.FIRST_SHIFT, 310, 270, 243, 225, false),
+        AVI(9, "Avi Goldberg", ROLE.MECHANIC, Director.SCHEDULE.FIRST_SHIFT, 310, 310, 243, 224, false),
         DAVID(10, "David Wood", ROLE.MECHANIC, Director.SCHEDULE.SECOND_SHIFT, 300, 290, 216, 225, false),
         DANIEL(11, "Daniel Wood", ROLE.MECHANIC, Director.SCHEDULE.SECOND_SHIFT, 290, 300, 243, 235, true),
-        MARIO(12, "Mario Zeiler", ROLE.MECHANIC, Director.SCHEDULE.FIRST_SHIFT, 270, 310, 216, 235, true),
+        MARIO(12, "Mario Zeiler", ROLE.MECHANIC, Director.SCHEDULE.FIRST_SHIFT, 272, 272, 216, 234, true),
         ROBOT(13, "Sam", ROLE.ROBOT, null, 0, 0, 0, 0, false);
         private final int id;
         private final ROLE role;
@@ -110,7 +112,7 @@ public class Crew {
         }
         public static MEMBER_INFO getInfoByName(String name) {
             for (MEMBER_INFO info : MEMBER_INFO.values()) {
-                if (info.toString().contains(name)) {
+                if (info.toString().equals(name)) {
                     return info;
                 }
             }
@@ -215,6 +217,7 @@ public class Crew {
         for (Human human : members) {
             if (human.isContains(x, y)) {
                 robot.goToHuman(human);
+                ClickPointGizmo.getInstance().startNewClick(ClickPoint.CLICK_TYPE.BLUE, x, y);
                 return true;
             }
         }

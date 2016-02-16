@@ -38,7 +38,8 @@
                         "text": "No I cannot."
                     },
                     {
-                        "text": "I have never tried."
+                        "text": "I have never tried.",
+                        "emo": 3
                     }
                 ]
             },
@@ -85,7 +86,8 @@
                         "text": "No, I do not promise you."
                     },
                     {
-                        "text": "I cannot lie, but I will not discuss it with others."
+                        "text": "I cannot lie, but I will not discuss it with others.",
+                        "emo": 3
                     }
                 ]
             },
@@ -157,7 +159,8 @@
                 "isRobot": false,
                 "message": [
                     {
-                        "text": "Stars. Look at them. They are going mad, or maybe I..."
+                        "text": "Stars. Look at them. They are going mad, or maybe I...",
+                        "emo": 5
                     }
                 ]
             },
@@ -165,7 +168,8 @@
                 "isRobot": true,
                 "message": [
                     {
-                        "text": "What are you talking about?"
+                        "text": "What are you talking about?",
+                        "emo": 3
                     }
                 ]
             },
@@ -173,7 +177,8 @@
                 "isRobot": false,
                 "message": [
                     {
-                        "text": "My eyes betrayed me. Stars are changing places."
+                        "text": "My eyes betrayed me. Stars are changing places.",
+                        "emo": 5
                     }
                 ]
             },
@@ -184,10 +189,12 @@
                         "text": "You are tired. It is simple artificial gravity of the station."
                     },
                     {
-                        "text": "I will report captain about your state."
+                        "text": "I will report captain about your state.",
+                        "emo": 2
                     },
                     {
-                        "text": "Captain also noticed, that we stray from trajectory."
+                        "text": "Captain also noticed, that we stray from trajectory.",
+                        "emo": 3
                     }
                 ]
             },
@@ -216,6 +223,1252 @@
                     }
                 ]
             }
+        ]
+    },
+    {
+        "id": 3,
+        "quest": "Need to find another confirmation",
+        "person": "MICHAEL",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hi Michael, what are you working on?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "You know, xenobiologist has no job now"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Sebastian behaves strangely, do you know what is going on?",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Only I know, but no one believes me.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "I will believe."
+                    },
+                    {
+                        "text": "Not surprisingly, xenobiologist is almost astrologer."
+                    },
+                    {
+                        "text": "Some stories again?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "You're one respect me.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Keep your iron mouth shut. ",
+                        "emo": 5
+                    },
+                    {
+                        "text": "Yeah-yeah, then don't say I did not warn.",
+                        "emo": 4
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Stars are at the same places. Gravity pulls us into wormhole and we are observing curvature of space."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "The existence of wormholes not confirmed."
+                    },
+                    {
+                        "text": "I have to report to the captain.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "If you are right, we are in trouble.",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "But scientifically justified.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Hurry up.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "Or it will be greatest discovery.",
+                        "emo": 5
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 4,
+        "quest": "I have to report situation.",
+        "person": "JACK",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Jack, your fears were confirmed, we strayed off course.",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "What hell are going on?"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Maybe we are falling into a wormhole."
+                    },
+                    {
+                        "text": "I do not know but station is in danger.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "You know better, you are the captain.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "What?! It is impossible!",
+                        "emo": 5
+                    },
+                    {
+                        "text": "Bad feeling justified.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "I have no idea.",
+                        "emo": 4
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "We should change a course immediately, and return home."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "[ALARM] ALL CREW, ALARM CODE RED."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "What should I do?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Do your job. Make everything to improve situation"
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 5,
+        "quest": "I have to help navigators, they have probably a lot of work.",
+        "person": "AVI",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hi Avi, do you need my help?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Only the God can help us now, but you can bring me some coffee.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Everything is so bad?",
+                        "emo": 3
+                    },
+                    {
+                        "text": "I think we can handle it."
+                    },
+                    {
+                        "text": "Panic does not improve our situation.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Gravity is stronger than our engines, we are falling into the funnel.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "Yes? Go and find another couple of jet engines, and I'll think.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "You're so indifferent, because you're immortal piece of iron",
+                        "emo": 4
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "How much time do we have left?",
+                        "emo": 3
+                    },
+                    {
+                        "text": "Maybe we can invent something at least."
+                    },
+                    {
+                        "text": "All going to be alright, I am sure."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Few seconds, we are accelerating.",
+                        "emo": 5
+                    },
+                    {
+                        "text": "Yes. Go and pray to your god of robots, you will meet him soon.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "Is that just you.",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "[ATTENTION] Up to the point of no return, left...",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "10........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "9.........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "8.........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "7.........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "6.........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "5. Prepare for the worst",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "4 Lord have mercy.",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "3.........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "2.........",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "1 Here we go. Arrived.",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "That is it? Nothing happens.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Are you sure. Talk to Mario, because I have to take meds for heart.",
+                        "emo": 3
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 6,
+        "quest": "I should talk with Mario, maybe he know, what is going on?",
+        "person": "MARIO",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hi Mario, what are the readings?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Unbelievable. We are no longer in the solar system.",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "And where? And how we can get back home?",
+                        "emo": 2
+                    },
+                    {
+                        "text": "Are you sure, maybe you can double-check the readings?",
+                        "emo": 3
+                    },
+                    {
+                        "text": "How far, we are?",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Correlation does not produce results, so we are in the middle of nowhere.",
+                        "emo": 5
+                    },
+                    {
+                        "text": "Double-check the cleanliness of windows, robot.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "I don't know, but I think we'll return home not soon.",
+                        "emo": 5
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Do you have ideas, how to get back to solar system?",
+                        "emo": 3
+                    },
+                    {
+                        "text": "If there is an entrance then there is an exit."
+                    },
+                    {
+                        "text": "We are doomed.",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I have some ideas, but we have bigger problem.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "I like your optimism.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Yep, go cry in the corner.",
+                        "emo": 4
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "The problem is that there are no stars around. Accumulators are not charging.",
+                        "emo": 2
+                    }
+                ]
+            },  
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "How long the charge will work?",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Ten days if we don't come up.",
+                        "emo": 2
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 7,
+        "quest": "One of the scouts must think soberly.",
+        "person": "IVAN",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hi Ivan, I see you are not worried."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Sometimes worse. Do not be afraid iron noggin, we will escape. Ha-ha-ha."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "And what is your plan?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I with my guys discussed it already. It remains only to convince Patrick."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "What is the deal?"
+                    },
+                    {
+                        "text": "Patrick always has his personal opinion.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "Persuade him by yourself."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Ask him yourself.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Yes, but still the captain will solve.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Then... Scram the hell out of here!",
+                        "emo": 4
+                    }
+                ]
+            },           
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "So what is your plan?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "We'll construct drones that will find another wormhole back."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "But you have to help persuade the captain, okay?"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "No problem."
+                    },
+                    {
+                        "text": "It will not be easy.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "I have better plan."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I love you for that.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "You are robots all weaklings.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "Take a look yourself. Do not let me down.",
+                        "emo": 1
+                    }
+                ]
+            }
+
+        ]
+    },
+     {
+        "id": 8,
+        "quest": "We need to know that Patrick has conceived.",
+        "person": "PATRICK",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hi Patrick, Ivan told me, that you have a plan."
+                    }
+                ]
+            },
+             {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Yes I have. And my plan is you. Sam, do you want to be a hero?"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Of course."
+                    },
+                    {
+                        "text": "Do you want to kill me?",
+                        "emo": 2
+                    },
+                    {
+                        "text": "I don't know, what did you mean?",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Little brave robot.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "It is dangerous idea, but no guts no glory",
+                        "emo": 1
+                    },
+                    {
+                        "text": "I thought robots have no fear.",
+                        "emo": 1
+                    }
+                ]
+            },           
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "How can I help you?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "We will attach the jet engine to you."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "It will be able to overcome wormhole gravity with you."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "And what next?"
+                    },
+                    {
+                        "text": "I think it will not work.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "You are just crazy!",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "You will return to the solar system, send a signal, and save us.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "It will work, you will see.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Someone should manage it.",
+                        "emo": 1
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "If you agree, you only need to persuade the captain."
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 9,
+        "quest": "I have to speak with doctor.",
+        "person": "SOFIA",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hello Sofia, how is the crew?"
+                    }
+                ]
+            },
+             {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Avi have heart problems. It is a big stress for everyone.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Can I help you?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Yes, take these calming pills, maybe someone need them.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "I even know who."
+                    },
+                    {
+                        "text": "I think it will not help them.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "Hopefully, they will take them.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Yes, some of them are frustrated and aggressive.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Maybe, I'll just do my job.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "I hope too.",
+                        "emo": 1
+                    }
+                ]
+            },           
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "And how are you feel?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I'm okay, I'm doctor.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I hope we will get back home.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "I am sure hundred percent."
+                    },
+                    {
+                        "text": "We have very little chance.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "We will see it soon.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Sam, you are the best robot in the world.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Then I go to write testament.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "Yes, you are right.",
+                        "emo": 2
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Clara wanted to talk to you."
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 10,
+        "quest": "I should speak with Clara.",
+        "person": "CLARA",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Hi Clara, you wanted to see me?"
+                    }
+                ]
+            },
+             {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Yes, I have a plan, how to extend battery life."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "What is the plan?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "We have to build a bioreactor. Making electricity from organic matter."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "That is great idea."
+                    },
+                    {
+                        "text": "Sounds like nonsense, take this pill.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "Even if we build it we have not enough organic matter on the board.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Of course, this will give us time gain.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Eat your freaking pills, by yourself.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "By my count enough",
+                        "emo": 3
+                    }
+                ]
+            },           
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "And then you will say that you need to sacrifice Murphy to bioreactor."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Who decided to take the man with such name on board?",
+                        "emo": 4
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "And do not exaggerate, bioreactor will give us a chance.",
+                        "emo": 4
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Perhaps you are right.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "We will lost our time.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "I will calculate it by myself.",
+                        "emo": 3
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Of course I'm a biologist.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Go and spend your time usefully.",
+                        "emo": 4
+                    },
+                    {
+                        "text": "And hurry, time is running out.",
+                        "emo": 1
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "See you later, Clara."
+                    }
+                ]
+            }
+
+        ]
+    },
+    {
+        "id": 11,
+        "quest": "I have to discuss all with captain.",
+        "person": "JACK",
+        "speech": [
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "How Jack, how are you?"
+                    }
+                ]
+            },
+             {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Sometimes better, I have a lot of work, so let's shorter."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Maybe calming pill?"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "I am calm."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "I spoke with crew, and I think we have ideas."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "The first idea. Drones scout, who will find a way back"
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Sounds good, but what if they can't?"
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Second. Attach one of the jet engine to me and throw through the wormhole back "
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Crazy, at first glance, but I will think."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Third. Build bioreactor to produce energy from organic."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "It is complex, and might not work."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "What do you prefer? Your opinion is also important."
+                    }
+                ]
+            },
+
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Dron-scouts."
+                    },
+                    {
+                        "text": "Reactive robot."
+                    },
+                    {
+                        "text": "Bioreactor."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Yes, it maybe the best idea.",
+                        "emo": 1
+                    },
+                    {
+                        "text": "Probably it is our last hope.",
+                        "emo": 2
+                    },
+                    {
+                        "text": "It is the only chance to survive.",
+                        "emo": 2
+                    }
+                ]
+            },           
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Then go to work."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Yes, we should do it as quickly as possible."
+                    }
+                ]
+            },
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Tell mechanics and help them in their work."
+                    }
+                ]
+            },
+            {
+                "isRobot": true,
+                "message": [
+                    {
+                        "text": "Yes sir!"
+                    },
+                    {
+                        "text": "I think they can handle it, without me.",
+                        "emo": 3
+                    },
+                    {
+                        "text": "Let's see"
+                    }
+                ]
+            },            
+            {
+                "isRobot": false,
+                "message": [
+                    {
+                        "text": "Long time ago in galaxy far away... It probably was said about us."
+                    }
+                ]
+            }
+
         ]
     }
 ]

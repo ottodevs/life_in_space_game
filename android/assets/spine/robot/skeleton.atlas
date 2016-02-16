@@ -1,96 +1,110 @@
 
 skeleton.png
-size: 512,256
+size: 1024,256
 format: RGBA8888
 filter: MipMap,Linear
 repeat: none
 body
   rotate: false
-  xy: 2, 11
+  xy: 2, 2
   size: 160, 239
   orig: 160, 239
   offset: 0, 0
   index: -1
+calm
+  rotate: false
+  xy: 362, 115
+  size: 76, 62
+  orig: 76, 62
+  offset: 0, 0
+  index: -1
 head
   rotate: false
-  xy: 164, 68
+  xy: 164, 59
   size: 196, 182
   orig: 196, 182
   offset: 0, 0
   index: -1
 l_arm
-  rotate: false
-  xy: 426, 116
+  rotate: true
+  xy: 719, 198
   size: 43, 58
   orig: 43, 58
   offset: 0, 0
   index: -1
 l_foot
-  rotate: true
-  xy: 471, 118
+  rotate: false
+  xy: 779, 202
   size: 56, 39
   orig: 56, 39
   offset: 0, 0
   index: -1
 l_hand
   rotate: false
-  xy: 385, 18
+  xy: 889, 194
   size: 47, 47
   orig: 47, 47
   offset: 0, 0
   index: -1
 l_leg
   rotate: true
-  xy: 164, 2
+  xy: 362, 83
   size: 30, 100
   orig: 30, 100
   offset: 0, 0
   index: -1
 l_shoulder
-  rotate: false
-  xy: 441, 176
+  rotate: true
+  xy: 519, 196
   size: 45, 74
   orig: 45, 74
   offset: 0, 0
   index: -1
 r_arm
   rotate: true
-  xy: 272, 22
+  xy: 595, 197
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 r_foot
   rotate: false
-  xy: 362, 67
+  xy: 656, 199
   size: 61, 42
   orig: 61, 42
   offset: 0, 0
   index: -1
 r_hand
   rotate: true
-  xy: 333, 20
+  xy: 837, 196
   size: 45, 50
   orig: 45, 50
   offset: 0, 0
   index: -1
 r_leg
   rotate: true
-  xy: 164, 34
+  xy: 164, 25
   size: 32, 106
   orig: 32, 106
   offset: 0, 0
   index: -1
 r_shoulder
-  rotate: false
-  xy: 362, 111
+  rotate: true
+  xy: 440, 115
   size: 62, 75
   orig: 62, 75
   offset: 0, 0
   index: -1
+sad
+  rotate: false
+  xy: 441, 179
+  size: 76, 62
+  orig: 76, 62
+  offset: 0, 0
+  index: -1
 smile
   rotate: false
-  xy: 362, 188
+  xy: 362, 179
   size: 77, 62
   orig: 77, 62
   offset: 0, 0

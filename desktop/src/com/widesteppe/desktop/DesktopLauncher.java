@@ -8,7 +8,6 @@ public class DesktopLauncher {
     public static void main(String[] arg) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setTitle("Homorium I");
-        //config.fullscreen = true;
         config.setWindowedMode(1280, 800);
         //config.useVsync(true);
 

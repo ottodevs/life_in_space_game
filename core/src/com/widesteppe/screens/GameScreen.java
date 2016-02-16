@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.widesteppe.Controller;
 import com.widesteppe.Director;
-import com.widesteppe.Quest;
+import com.widesteppe.scene_events.SceneEventManager;
 import com.widesteppe.actors.Astronaut;
 import com.widesteppe.actors.Crew;
 import com.widesteppe.actors.Human;
@@ -45,6 +45,7 @@ public class GameScreen implements Screen {
     private Stage spaceshipStage;
     public static final float PHYS_WORLD_WIDTH = 1200f;
     private Director director;
+    private SceneEventManager sceneEventManager;
 
     public GameScreen() {
         physWorldHeight = PHYS_WORLD_WIDTH;
@@ -65,6 +66,8 @@ public class GameScreen implements Screen {
         cam.update();
         mainGui = new MainGUI(this);
         director = new Director(crew);
+        sceneEventManager = new SceneEventManager(this);
+
     }
 
     private void createBack() {
@@ -92,9 +95,13 @@ public class GameScreen implements Screen {
         setPause(false);
         MainTimer.setTimeInSeconds(MyPrefs.getInstance().getTimerValue());
         MainGUI.isGameOVER = MyPrefs.getInstance().isGameOver();
-        director.getQuest().setId(MyPrefs.getInstance().getMissionId());
+        director.getQuest().setId(4);
         Gdx.input.setInputProcessor(inputHandler);
         director.getQuest().reset();
+        for (Human human : crew.getMembers()) {
+            human.resetActivity();
+        }
+        crew.getRobot().setReachedPerson(false);
 
     }
 
@@ -129,12 +136,13 @@ public class GameScreen implements Screen {
         //FOREGROUND
         spriteBatch.begin();
         foreground.render(spriteBatch);
+        ClickPointGizmo.getInstance().render(spriteBatch);
         spriteBatch.end();
 
-        spriteBatch.begin();
+        //spriteBatch.begin();
        // AssetsLoader.font1.draw(spriteBatch, String.valueOf(currentDistance), 0, 0);
 
-        spriteBatch.end();
+        //spriteBatch.end();
         spaceshipStage.act();
         spaceshipStage.draw();
         if (Controller.IS_DEBUG_MODE) {
@@ -150,9 +158,11 @@ public class GameScreen implements Screen {
             for (Star star : StarGenerator.getStars()) star.update(delta);
             crew.update(delta);
             director.update(delta);
+            sceneEventManager.update(delta);
             if (director.getQuest().isDialog() && cam.zoom != MIN_ZOOM) {
                 scrollCamera(-10);
             }
+            ClickPointGizmo.getInstance().update(delta);
         }
 
     }
@@ -275,4 +285,6 @@ public class GameScreen implements Screen {
     public Director getDirector() {
         return director;
     }
+
+
 }

@@ -20,6 +20,7 @@ public abstract class Astronaut {
     protected final SkeletonData skeletonData;
     protected final Skeleton skeleton;
     private final Animation talk;
+    protected final float initialAngle;
     private float time;
     private SkeletonRenderer renderer;
     private final Animation walk;
@@ -60,6 +61,7 @@ public abstract class Astronaut {
 
     public Astronaut(float initialAngle, float scale, float walkAngleVelocity, String skeletonJsonAddress, TextureAtlas atlas, Crew.MEMBER_INFO info) {
         this.scale = scale;
+        this.initialAngle = initialAngle;
         this.currentPositionAngle = initialAngle;
         this.walkAngleVelocity = walkAngleVelocity;
         this.info = info;
@@ -211,13 +213,14 @@ public abstract class Astronaut {
         }
     }
 
-    private void changePositionAccordingToAngle() {
+    protected void changePositionAccordingToAngle() {
         skeleton.setPosition(MathUtils.cosDeg(currentPositionAngle) * GameScreen.WALKING_DIST, MathUtils.sinDeg(currentPositionAngle) * GameScreen.WALKING_DIST);
     }
 
     public void setToIdle() {
         currentState = AI_STATE.IDLE;
         mixNewAnim(idle1);
+        changePositionAccordingToAngle();
     }
 
     public void render(PolygonSpriteBatch batch) {

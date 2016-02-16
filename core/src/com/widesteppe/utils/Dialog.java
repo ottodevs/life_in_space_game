@@ -7,4 +7,7 @@ public class Dialog {
     public String quest;
     public String person;
     public ArrayList<Speech> speech;
+
+    public Dialog() {
+    }
 }

@@ -18,6 +18,8 @@ public class ConsoleWriter {
         float lastTime = timeAfterStart % LAST_CHAR_DUR;
         if (lastTime > 0.1f) {
             s = s + "_";
+        } else {
+            s = s + " ";
         }
         return s;
     }

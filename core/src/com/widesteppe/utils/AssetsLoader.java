@@ -21,6 +21,7 @@ public class AssetsLoader implements Disposable {
     public static final Color spaceColor = Color.valueOf("#05051e");
     public static final Color blackConsoleColor = Color.valueOf("#272822");
     public static final Color greenConsoleColor = Color.valueOf("#a6e22e");
+    public static final Color redConsoleColor = Color.valueOf("#a22a54");
     public static final String logoSoundAddress = "sounds/logo.wav";
     public static final String font1Address = "fonts/font1.fnt";
     public static final String font2Address = "fonts/font2.fnt";
@@ -60,6 +61,7 @@ public class AssetsLoader implements Disposable {
     public static TextureAtlas foreAtlas;
     public static TextureAtlas popupAtlas;
     public static ArrayList<Dialog> dialogs = new ArrayList<Dialog>();
+    public static Dialog dial = new Dialog();
 
     private AssetsLoader() {
     }
@@ -137,6 +139,8 @@ public class AssetsLoader implements Disposable {
         humanSpineAtlas = manager.get(humanSpineAtlasAddress, TextureAtlas.class);
         crewSpineAtlas = manager.get(crewSpineAtlasAddress, TextureAtlas.class);
         foreAtlas = manager.get(foreAtlasAddress, TextureAtlas.class);
+
+
         popupAtlas = manager.get(popupAtlasAddress, TextureAtlas.class);
     }
 

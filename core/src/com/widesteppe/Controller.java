@@ -27,7 +27,7 @@ public class Controller extends Game {
 	private static boolean shouldSetGameScreen;
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
-	public static final boolean IS_DEBUG_MODE = false;
+	public static final boolean IS_DEBUG_MODE = true;
 	private static boolean shouldSetMenuScreen;
 	private static TweenManager tweenManager;
 	private GameScreen gameScreen;

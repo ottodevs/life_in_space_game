@@ -12,7 +12,7 @@ import com.widesteppe.utils.*;
 import java.util.ArrayList;
 
 public class Quest {
-    private int id = 0;
+    private int id = 4;
     private String currentQuestMessage;
     private Crew.MEMBER_INFO currentQuestPerson;
     private Dialog currentDialog;
@@ -40,12 +40,21 @@ public class Quest {
     }
 
     private void createQuest() {
+        if (id < 5) {
+            setMoodToHappy();
+        }
         currentDialog = AssetsLoader.dialogs.get(id);
         currentQuestPerson = Crew.MEMBER_INFO.getInfoByName(currentDialog.person);
         currentQuestMessage = currentDialog.quest;
         currentQuestHuman = director.getCrew().getHumanByInfo(currentQuestPerson);
         currentSpeech = currentDialog.speech;
 
+    }
+
+    private void setMoodToHappy() {
+        for (Human human : director.getCrew().getMembers()) {
+            human.currentMood = Human.EMOTION.HAPPY;
+        }
     }
 
 
@@ -101,8 +110,10 @@ public class Quest {
             if (currentSpeech.get(currentReplicI).isRobot && robot.getCurrentState() == Astronaut.AI_STATE.IDLE) {
                 if (currentMessage.size() == 1) {
                     robot.sayMessage(currentMessage.get(0).text);
+                    updateRobotEmo(currentMessage.get(0).emo);
                 } else {
                     robot.sayMessage(currentMessage.get(lastMessageId).text);
+                    updateRobotEmo(currentMessage.get(lastMessageId).emo);
 
                 }
                 responceChoosen = false;
@@ -110,6 +121,11 @@ public class Quest {
                 if (currentMessage.size() == 1) {
                     currentQuestHuman.sayMessage(currentMessage.get(0).text);
                     updateEmo(currentMessage.get(0).emo);
+                    if (id == 4) {
+                        if (currentReplicI == 16) {
+                            //StarGenerator.boom();
+                        }
+                    }
                 } else {
                     currentQuestHuman.sayMessage(currentMessage.get(lastMessageId).text);
                     updateEmo(currentMessage.get(lastMessageId).emo);
@@ -126,6 +142,24 @@ public class Quest {
             }
 
 
+        }
+    }
+
+    private void updateRobotEmo(int emo) {
+        switch (emo) {
+            case 0:
+                return;
+            case 1:
+                robot.setEmotion(Robot.EMOTION.HAPPY);
+                break;
+            case 2:
+                robot.setEmotion(Robot.EMOTION.SAD);
+                break;
+            case 3:
+                robot.setEmotion(Robot.EMOTION.CALM);
+                break;
+            default:
+                robot.setEmotion(Robot.EMOTION.HAPPY);
         }
     }
 
@@ -176,11 +210,24 @@ public class Quest {
     private void checkPlot() {
         if (id < AssetsLoader.dialogs.size() - 1) {
             id++;
+            if (id == 5) {
+                changeMood();
+            }
             createQuest();
             MyPrefs.getInstance().saveProgress(id, MainTimer.getTimeInSeconds());
         } else {
             MainGUI.isGameOVER = true;
             MyPrefs.getInstance().saveGameOver();
+        }
+    }
+
+    private void changeMood() {
+        for (Human human : director.getCrew().getMembers()) {
+            switch (human.getInfo()) {
+                case AVI: case MARIO: case CLARA: case SOFIA: case SEB: human.currentMood = Human.EMOTION.SAD; break;
+                case GAVIN: human.currentMood = Human.EMOTION.ANGRY; break;
+                default: human.currentMood = Human.EMOTION.HAPPY;
+            }
         }
     }
 
@@ -231,5 +278,13 @@ public class Quest {
             idleTimer = MAX_IDLE_TIME - 2;
             robot.forceFinishMessage();
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getCurrentReplicI() {
+        return currentReplicI;
     }
 }
